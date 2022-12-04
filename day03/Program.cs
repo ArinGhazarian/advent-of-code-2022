@@ -1,10 +1,13 @@
-﻿var itemPriorities = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-var data = File.ReadAllLines("input.txt")
+﻿var data = File.ReadAllLines("input.txt")
     .Select(line => line.Trim())
     .ToArray();
 
-int GetItemPriority(char item) => itemPriorities.IndexOf(item) + 1;
+int GetItemPriority(char item) => item switch
+{
+    >= 'a' and <= 'z' => item - 'a' + 1,
+    >= 'A' and <= 'Z' => item - 'A' + 27,
+    _ => throw new ArgumentOutOfRangeException(nameof(item))
+};
 
 long GetPart1()
 {
