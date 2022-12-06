@@ -8,7 +8,7 @@ long GetFirstMarkerIndex(int bufferSize)
     {
         if (buffer.Count == bufferSize)
         {
-            if (new HashSet<char>(buffer).Count == bufferSize)
+            if (buffer.Distinct().Count() == bufferSize)
             {
                 return number;
             }
